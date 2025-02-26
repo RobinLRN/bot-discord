@@ -18,18 +18,13 @@ class Responses(commands.Cog):
         if message.content.lower().strip().endswith(("quoi", "quoi?", "quoi ?", "kwa", "quoa", "koa")):
             await message.channel.send("feur")
 
-@commands.Cog.listener()
-async def on_message(self, message):  
-    if message.author.bot:
-        return 
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        if message.author.bot:
+            return
 
-    triggers = ["c'est quoi", "c quoi", "c'est quoi ?", "c'est quoi ça", "c'est quoi?", 
-                "quoi ça ?", "quoi ça?", "quoi sa ?", "quoi sa?", "quoi ça", "quoi sa", "c quoi?", "c quoi ?"]
-
-    if any(trigger in message.content.lower() for trigger in triggers):
-        await message.channel.send("c'est feur")  
-
-
+        if message.content.lower().strip().startswith(("c'est quoi","c quoi", "c kwa")):
+            await message.channel.send("c'est feur")
 
 async def setup(bot):
     await bot.add_cog(Responses(bot))
