@@ -15,13 +15,13 @@ class Responses(commands.Cog):
         if message.author.bot:
             return
 
-        # Définition des triggers
+        
         triggers_feur = ["quoi", "quoi?", "quoi ?", "kwa", "quoa", "koa"]
         triggers_c_feur = ["c'est quoi", "c'est quoi?", "c'est quoi ?", "c quoi", "c quoi?", "c quoi ?", "c kwa"]
 
         message_content = message.content.lower().strip()
 
-        # Vérification si le message contient un des triggers
+        
         if any(message_content.endswith(trigger) for trigger in triggers_feur):
             await message.channel.send("feur")
         elif any(message_content.startswith(trigger) for trigger in triggers_c_feur):
