@@ -17,7 +17,8 @@ class Responses(commands.Cog):
 
         
         triggers_feur = ["quoi", "quoi?", "quoi ?", "kwa", "quoa", "koa"]
-        triggers_c_feur = ["c'est quoi", "c'est quoi?", "c'est quoi ?", "c quoi", "c quoi?", "c quoi ?", "c kwa"]
+        triggers_c_feur = ["c'est quoi", "c quoi", "c kwa"]
+        triggers_c_feur2 = ["c'est quoi", "c'est quoi?", "c'est quoi ?", "c quoi", "c quoi?", "c quoi ?", "c kwa"]
 
         message_content = message.content.lower().strip()
 
@@ -26,6 +27,8 @@ class Responses(commands.Cog):
             await message.channel.send("feur")
         elif any(message_content.startswith(trigger) for trigger in triggers_c_feur):
             await message.channel.send("c'est feur")
+        elif any(message_content.endswith(trigger) for trigger in triggers_c_feur2):
+            await message.channel.send("c'est feur")    
 
 async def setup(bot):
     await bot.add_cog(Responses(bot))
